@@ -16,6 +16,10 @@ import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
 import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
+import About from "./components/About.js";
+import Home from "./components/Home/Home.js"
+import Team from "./components/Team/Team.js"
+import Contact from "./components/Contact/Contact.js"
 function App() {
   return (
     <>
@@ -123,6 +127,38 @@ function App() {
           element={
             <PublicRoute>
               <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/About"
+          element={
+            <PublicRoute>
+              <About/>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/Home"
+          element={
+            <PublicRoute>
+              <Home/>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/Team"
+          element={
+            <PublicRoute>
+              <Team/>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/Contact"
+          element={
+            <PublicRoute>
+              <Contact/>
             </PublicRoute>
           }
         />

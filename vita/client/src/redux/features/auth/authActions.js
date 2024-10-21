@@ -9,7 +9,7 @@ export const userLogin = createAsyncThunk(
       const { data } = await API.post("/auth/login", { role, email, password });
       //store token
       if (data.success) {
-        alert(data.message);
+        toast.success(data.message);  // Replaced alert with toast notification
         localStorage.setItem("token", data.token);
         window.location.replace("/");
       }
@@ -54,10 +54,10 @@ export const userRegister = createAsyncThunk(
         website,
       });
       if (data?.success) {
-        alert("User Registerd Successfully");
+        toast.success("User Registered Successfully");  // Replaced alert with toast notification
         window.location.replace("/login");
-        // toast.success("User Registerd Successfully");
       }
+      return data;
     } catch (error) {
       console.log(error);
       if (error.response && error.response.data.message) {
@@ -72,7 +72,7 @@ export const userRegister = createAsyncThunk(
 //current user
 export const getCurrentUser = createAsyncThunk(
   "auth/getCurrentUser",
-  async ({ rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {  // Adjusted argument destructuring
     try {
       const res = await API.get("/auth/current-user");
       if (res.data) {
@@ -88,3 +88,4 @@ export const getCurrentUser = createAsyncThunk(
     }
   }
 );
+
